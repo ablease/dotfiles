@@ -1,0 +1,63 @@
+[alias]
+  st = status
+  di = diff
+  co = checkout
+  ci = "duet-commit -v"
+  rv = "duet-revert"
+  br = branch
+  sta = stash
+  llog = "log --date=local"
+  flog = "log --pretty=fuller --decorate"
+  lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+  lol = "log --graph --decorate --oneline"
+  lola = "log --graph --decorate --oneline --all"
+  blog = "log origin/master... --left-right"
+  ds = "diff --staged"
+  sw = switch
+  fixup = "commit --fixup"
+  squash = "commit --squash"
+  unstage = "reset HEAD"
+  rum = "rebase master@{u}"
+  drb = rebase -i --exec 'git duet-commit --amend --reset-author -v'
+  pom = push origin master
+  poh = push origin head
+  prom = pull --rebase origin master
+[core]
+  editor = nvim
+  excludesfile = ~/.gitignore_global
+  hooksPath = /Users/pivotal/workspace/git-hooks
+[url "git@github.com:"]
+  insteadOf = https://github.com/
+[http "https://gopkg.in"]
+  followRedirects = true
+[merge]
+  conflictstyle = diff3
+[push]
+  default = simple
+[submodule]
+  fetchJobs = 6
+[diff]
+  compactionHeuristic = true
+[commit]
+  verbose = true
+  template = ~/.gitmessage
+	gpgsign = true
+[user]
+  name = Mirah Gary
+  email = mgary@pivotal.io
+[duet "env"]
+	git-author-initials = mg
+	git-author-name = Mirah Gary
+	git-author-email = mgary@pivotal.io
+	mtime = 1588863543
+	git-committer-initials = 
+	git-committer-name = 
+	git-committer-email = 
+[gpg]
+  program = /usr/local/bin/gpg
+[credential]
+  helper = osxkeychain
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
