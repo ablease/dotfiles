@@ -5,6 +5,9 @@ export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 
+# Setup Gpg
+export GPG_TTY=$(tty)
+
 export PATH=$PATH:$HOME/workspace/rabbitmq-tile-home/bin
 
 # Capybara Webkit needs special Qt starting with XCode 10

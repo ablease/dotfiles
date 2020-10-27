@@ -1,4 +1,4 @@
-export ZSH="/Users/mgary/.oh-my-zsh"
+export ZSH="/Users/alexblease/.oh-my-zsh"
 
 ZSH_THEME="custom-refined"
 
