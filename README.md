@@ -1,6 +1,6 @@
-# Mirah's Dotfiles
+# My dotfiles
 
-![Image of my terminal](screenshot.png)
+Inspired/stolen from Mirah's dotfiles. Thanks Mirah!
 
 This exists primarily for the purposes of backing up my config, especially after I lost all my zsh config once in the middle of customizing it.
 
@@ -8,7 +8,7 @@ This exists primarily for the purposes of backing up my config, especially after
 
 Clone the repo, then run `make setup`
 ```
-git clone git@github.com:MirahImage/dotfiles.git && \
+git clone git@github.com:ablease/dotfiles.git && \
     cd dotfiles && \
     make setup
 ```
