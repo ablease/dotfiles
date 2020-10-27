@@ -11,3 +11,6 @@ export PATH=$PATH:$HOME/workspace/rabbitmq-tile-home/bin
 export PATH=$PATH:$HOME/Qt5.5.0/5.5/clang_64/bin
 
 export PATH=$PATH:/usr/local/kubebuilder/bin
+
+# Mac uses an ancient version of ruby, use homebrew ruby instead
+export PATH=/usr/local/opt/ruby/bin:$PATH

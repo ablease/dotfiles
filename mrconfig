@@ -1,0 +1,152 @@
+[DEFAULT]
+# global update command applied to all repos
+# overridden by repos whose trunk is not "master"
+update =
+   local_changes=$(git stash push -m "hop" | grep "Saved working directory" | wc -l)
+   git checkout master
+   git pull --rebase --autostash
+   git checkout -
+   if [ local_changes == 1 ]; then git stash pop; fi
+
+# -----------------
+# RabbitMQ for VMs
+# -----------------
+[workspace/cf-rabbitmq-release]
+checkout = git clone 'git@github.com:pivotal-cf/cf-rabbitmq-release.git' 'cf-rabbitmq-release'
+resethardhead = git reset --hard HEAD
+init = git init
+
+[workspace/cf-rabbitmq-multitenant-broker-release]
+checkout = git clone 'git@github.com:pivotal-cf/cf-rabbitmq-multitenant-broker-release.git' 'cf-rabbitmq-multitenant-broker-release'
+init = git init
+
+[workspace/rabbitmq-metrics-release]
+checkout = git clone 'git@github.com:pivotal-cf/rabbitmq-metrics-release.git' 'rabbitmq-metrics-release'
+resethardhead = git reset --hard HEAD
+init = git init
+
+[workspace/cf-rabbitmq-test-release]
+checkout = git clone 'git@github.com:pivotal-cf/cf-rabbitmq-test-release.git' 'cf-rabbitmq-test-release'
+resethardhead = git reset --hard HEAD
+init = git init
+
+[workspace/cf-rabbitmq-smoke-tests-release]
+checkout = git clone 'git@github.com:pivotal-cf/cf-rabbitmq-smoke-tests-release.git' 'cf-rabbitmq-smoke-tests-release'
+init = git init
+
+[workspace/rabbit-example-app]
+checkout = git clone 'git@github.com:pivotal-cf/rabbit-example-app.git' 'rabbit-example-app'
+init = git init
+
+[workspace/robbit]
+checkout = git clone 'git@github.com:pivotal-cf-experimental/robbit.git' 'robbit'
+init = git init
+
+[workspace/docs-rabbitmq-pcf]
+checkout = git clone 'git@github.com:pivotal-cf/docs-rabbitmq-pcf.git' 'docs-rabbitmq-pcf'
+init = git init
+
+# https://github.com/pivotal-cf/docs-rabbitmq-replicator
+[workspace/docs-rabbitmq-replicator]
+checkout = git clone 'git@github.com:pivotal-cf/docs-rabbitmq-replicator.git' 'docs-rabbitmq-replicator'
+init = git init
+
+# https://github.com/pivotal-cf/docs-book-rabbitmq-replicator
+[workspace/docs-book-rabbitmq-replicator]
+checkout = git clone 'git@github.com:pivotal-cf/docs-book-rabbitmq-replicator.git' 'docs-book-rabbitmq-replicator'
+init = git init
+
+# Private
+[workspace/docs-book-rabbitmq]
+checkout = git clone 'git@github.com:pivotal-cf/docs-book-rabbitmq.git' 'docs-book-rabbitmq'
+init = git init
+
+[workspace/p-rabbitmq]
+checkout = git clone 'git@github.com:pivotal-cf/p-rabbitmq.git' 'p-rabbitmq'
+update =
+	 git checkout v1.21
+	 git pull --rebase --autostash
+resethardhead = git reset --hard HEAD
+init = git init
+
+[workspace/rabbitmq-on-demand-adapter-release]
+checkout = git clone 'git@github.com:pivotal-cf/rabbitmq-on-demand-adapter-release.git' 'rabbitmq-on-demand-adapter-release'
+resethardhead = git reset --hard HEAD
+init = git init
+
+[workspace/rabbitmq-replicator]
+checkout = git clone 'git@github.com:pivotal-cf/rabbitmq-replicator.git' 'rabbitmq-replicator'
+init = git init
+
+# https://github.com/pivotal-cf/cf-rabbitmq-pipelines
+[workspace/cf-rabbitmq-pipelines]
+checkout = git clone 'git@github.com:pivotal-cf/cf-rabbitmq-pipelines.git' 'cf-rabbitmq-pipelines'
+init = git init
+
+# https://github.com/pivotal-cf/cf-rabbitmq-service-gateway-release
+[workspace/cf-rabbitmq-service-gateway-release]
+checkout = git clone 'git@github.com:pivotal-cf/cf-rabbitmq-service-gateway-release' 'cf-rabbitmq-service-gateway-release'
+init = git init
+
+[workspace/on-demand-service-broker-release]
+checkout = git clone 'git@github.com:pivotal-cf/on-demand-service-broker-release.git' 'on-demand-service-broker-release'
+resethardhead = git reset --hard HEAD
+init = git init
+
+[workspace/robbit]
+checkout = git clone 'git@github.com:pivotal-cf-experimental/robbit.git' 'robbit'
+init = git init
+
+[workspace/norsk-config]
+checkout = git clone 'git@github.com:pivotal-cf/norsk-config.git' 'norsk-config'
+init = git init
+
+[workspace/strabo]
+checkout = git clone 'git@github.com:pivotal/strabo.git' 'strabo'
+init = git init
+
+# -----------------
+# RabbitMQ for k8s
+# -----------------
+
+# https://github.com/rabbitmq/cluster-operator
+[workspace/cluster-operator]
+checkout = git clone 'git@github.com:rabbitmq/cluster-operator.git' 'cluster-operator'
+update =
+	 git checkout main
+	 git pull --rebase --autostash
+init = git init
+
+# ------------
+# Rabbit core
+# ------------
+
+[workspace/rabbitmq-public-umbrella]
+checkout = git clone 'git@github.com:rabbitmq/rabbitmq-public-umbrella.git' 'rabbitmq-public-umbrella'
+resethardhead = git reset --hard HEAD
+init = git init
+
+[workspace/rabbitmq-perf-test]
+checkout = git clone 'git@github.com:rabbitmq/rabbitmq-perf-test.git' 'rabbitmq-perf-test'
+resethardhead = git reset --hard HEAD
+init = git init
+
+# ------------------
+# Personal Projects
+# ------------------
+
+# https://github.com/MirahImage/MirahImage
+[workspace/MirahImage]
+checkout = git clone 'git@github.com:MirahImage/MirahImage.git' 'MirahImage'
+update =
+	 git checkout main
+	 git pull --rebase --autostash
+init = git init
+
+# https://github.com/PurpleBooth/walks
+[workspace/walks]
+checkout = git clone 'git@github.com:PurpleBoot/walks.git' 'walks'
+update =
+	 git checkout main
+	 git pull --rebase --autostash
+init = git init

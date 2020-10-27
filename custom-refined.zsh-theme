@@ -50,43 +50,39 @@ git_dirty() {
 }
 
 git_untracked() {
-    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-        git status --porcelain | grep '??' &> /dev/null ; then
-        # This will show the marker if there are any untracked files in repo.
-        # If instead you want to show the marker only if there are untracked
-        # files in $PWD, use:
-        #[[ -n $(git ls-files --others --exclude-standard) ]] ; then
-        echo -n 'U'
+    local untracked
+    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]]; then
+        untracked=$(git status --porcelain | grep '??' | wc -l)
+        (( $untracked )) && echo -n "U${untracked//[[:blank:]]/}"
     fi
 }
 
 git_st() {
     local ahead behind
     local -a gitstatus
+    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]]; then
+        ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l)
+        (( $ahead )) && gitstatus+=( "↑${ahead}" )
 
-    ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l)
-    (( $ahead )) && gitstatus+=( "↑${ahead}" )
+        behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l)
+        (( $behind )) && gitstatus+=( "↓${behind}" )
 
-    behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l)
-    (( $behind )) && gitstatus+=( "↓${behind}" )
-
-    echo -n "${gitstatus//[[:blank:]]/}"
+        echo -n "${gitstatus//[[:blank:]]/}"
+    fi
 }
 
 git_stash() {
     local stashed
-    local -a gitstash
-
-    stashed=$(git stash list 2>/dev/null | wc -l)
-    (( $stashed )) && gitstash+=( "≡${stashed}" )
-
-    echo -n "${gitstash//[[:blank:]]/}"
+    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]]; then
+        stashed=$(git stash list 2>/dev/null | wc -l)
+        (( $stashed )) && echo -n "≡${stashed//[[:blank:]]/}"
+    fi
 }
 
 # Display information about the current repository
 #
 repo_information() {
-    echo "%F{93}${vcs_info_msg_0_%%/.} %F{133}$vcs_info_msg_1_ %F{198}`git_st``git_untracked``git_dirty``git_stash` $vcs_info_msg_2_%f"
+    echo "%F{93}${vcs_info_msg_0_%%/.} %F{133}$vcs_info_msg_1_ %F{198}`git_st` `git_untracked` `git_stash``git_dirty` $vcs_info_msg_2_%f"
 }
 
 # Displays the exec time of the last command if set threshold was exceeded
@@ -108,7 +104,7 @@ preexec() {
 #
 precmd() {
     vcs_info # Get version control info before we start outputting stuff
-    print -P "\n$(repo_information) %F{yellow}$(cmd_exec_time)%f"
+    print -P "\n$(repo_information) %F{043}$(cmd_exec_time)%f"
     unset cmd_timestamp #Reset cmd exec time.
 }
 

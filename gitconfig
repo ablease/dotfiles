@@ -25,7 +25,7 @@
 [core]
   editor = nvim
   excludesfile = ~/.gitignore_global
-  hooksPath = /Users/pivotal/workspace/git-hooks
+  hooksPath = /Users/mgary/workspace/git-hooks-core
 [url "git@github.com:"]
   insteadOf = https://github.com/
 [http "https://gopkg.in"]
@@ -50,9 +50,9 @@
 	git-author-name = Mirah Gary
 	git-author-email = mgary@pivotal.io
 	mtime = 1588863543
-	git-committer-initials = 
-	git-committer-name = 
-	git-committer-email = 
+	git-committer-initials = mg
+	git-committer-name = Mirah Gary
+	git-committer-email = mgary@pivotal.io
 [gpg]
   program = /usr/local/bin/gpg
 [credential]
