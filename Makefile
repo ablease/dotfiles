@@ -10,7 +10,7 @@ show-help:
 
 .PHONY: setup
 ## Installs dotfiles
-setup: brew zsh git tmux smith go-tools vscode-extensions cf-plugins Spacevim repos fonts allow-internet
+setup: brew zsh git tmux smith go-tools vscode-extensions cf-plugins spacevim repos fonts allow-internet
 
 
 .PHONY: zsh
@@ -115,11 +115,12 @@ endif
 	cf install-plugin "log-cache" -r CF-Community -f
 	cf install-plugin "log-stream" -r CF-Community -f
 
-.PHONY: Spacevim
-## Install Spacevim
-Spacevim:
+.PHONY: spacevim
+## Install spacevim
+spacevim:
 	curl -sLf https://spacevim.org/install.sh | bash
 	rm $(HOME)/.SpaceVim.d/init.toml
+	rm $(HOME)/.Spacevim.d/autoload
 	ln -s $(ROOT_DIR)/spacevim/autoload $(HOME)/.Spacevim.d
 	ln -s $(ROOT_DIR)/spacevim/init.toml $(HOME)/.Spacevim.d
 
