@@ -60,8 +60,10 @@ alias pip="pip3"
 
 alias k="kubectl"
 
-# Use gnumake
-alias make="/usr/local/bin/make"
+# fasd
+alias z='fasd_cd -d'
+
+eval "$(fasd --init auto)"
 
 # git short commands
 alias gp="git push"
