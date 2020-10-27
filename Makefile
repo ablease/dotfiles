@@ -10,7 +10,7 @@ show-help:
 
 .PHONY: setup
 ## Installs dotfiles
-setup: brew zsh git tmux smith go-tools vscode-extensions cf-plugins luan-vim repos allow-internet
+setup: brew zsh git tmux smith go-tools vscode-extensions cf-plugins Spacevim repos fonts allow-internet
 
 
 .PHONY: zsh
@@ -115,10 +115,13 @@ endif
 	cf install-plugin "log-cache" -r CF-Community -f
 	cf install-plugin "log-stream" -r CF-Community -f
 
-.PHONY: luan-vim
-## Install luan-vim
-luan-vim:
-	if [ -d $(HOME)/.vim ]; then vim-update; else curl vimfiles.luan.sh/install | bash; fi
+.PHONY: Spacevim
+## Install Spacevim
+Spacevim:
+	curl -sLf https://spacevim.org/install.sh | bash
+	rm $(HOME)/.SpaceVim.d/init.toml
+	ln -s $(ROOT_DIR)/spacevim/autoload $(HOME)/.Spacevim.d
+	ln -s $(ROOT_DIR)/spacevim/init.toml $(HOME)/.Spacevim.d
 
 .PHONY: repos
 ## Clone git repos
@@ -126,6 +129,16 @@ repos:
 	ln -f $(ROOT_DIR)/mrconfig $(HOME)/.mrconfig
 	cd $(HOME) && \
 		mr update -q -j 4 --rebase --autostash
+
+.PHONY: fonts
+## Install patched fonts
+fonts:
+	# clone
+	git clone https://github.com/powerline/fonts.git --depth=1
+	# install
+	$(ROOT_DIR)/fonts/install.sh
+	# clean-up a bit
+	rm -rf $(ROOT_DIR)/fonts/
 
 .PHONY: allow-internet
 ## Allow executables from the internet
