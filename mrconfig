@@ -134,19 +134,3 @@ init = git init
 # ------------------
 # Personal Projects
 # ------------------
-
-# https://github.com/MirahImage/MirahImage
-[workspace/MirahImage]
-checkout = git clone 'git@github.com:MirahImage/MirahImage.git' 'MirahImage'
-update =
-	 git checkout main
-	 git pull --rebase --autostash
-init = git init
-
-# https://github.com/PurpleBooth/walks
-[workspace/walks]
-checkout = git clone 'git@github.com:PurpleBoot/walks.git' 'walks'
-update =
-	 git checkout main
-	 git pull --rebase --autostash
-init = git init
