@@ -48,6 +48,10 @@ export FZF_DEFAULT_OPTS="--extended --cycle --reverse --ansi"
 eval "$(direnv hook zsh)"
 alias da="direnv allow"
 
+# python
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+alias python=/usr/local/opt/python@3.8/bin/python3
+
 # Always use nvim
 export EDITOR=nvim
 alias vim="nvim"
