@@ -19,12 +19,14 @@ plugins=(
     cargo
     colored-man-pages
     colorize
+    chroma
     direnv
     docker
     gcloud
     git
     golang
     rust
+    pygments
     terraform
     thefuck
     yarn
@@ -58,7 +60,6 @@ alias vim="nvim"
 alias vi="nvim"
 
 alias ll="ls -al"
-alias cat="ccat"
 
 alias pip="pip3"
 
