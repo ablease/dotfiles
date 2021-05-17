@@ -83,6 +83,9 @@ export LPASS_AGENT_TIMEOUT=28800
 # Add zsh completion
 fpath+=("$(brew --prefix)/share/zsh-completions")
 source "$(brew --prefix)/share/zsh/site-functions"
+#
+# Setup Gpg
+export GPG_TTY=$(tty)
 
 # Tweak zsh highlighting colors
 export ZSH_HIGHLIGHT_STYLES[bracket-level-1]='fg=cyan,bold'
