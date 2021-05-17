@@ -10,7 +10,7 @@ show-help:
 
 .PHONY: setup
 ## Installs dotfiles
-setup: brew zsh git tmux smith go-tools vscode-extensions cf-plugins spacevim repos fonts allow-internet
+setup: brew zsh git tmux smith go-tools rust vscode-extensions cf-plugins spacevim repos fonts allow-internet
 
 
 .PHONY: zsh
@@ -88,6 +88,11 @@ smith:
 go-tools:
 	go get -u github.com/onsi/ginkgo/ginkgo \
 		github.com/onsi/gomega
+
+.PHONY: rust
+## Install rust and rust toolchain
+rust:
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 .PHONY: vscode-extensions
 ## Install vscode extensions
