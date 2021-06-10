@@ -80,7 +80,8 @@ tmux:
 .PHONY: smith
 ## Add smith and token hook
 smith:
-	go get -u github.com/pivotal/smith
+	git clone git@github.com:pivotal/smith.git && cd smith && go install
+	rm -rf smith
 	ln -f $(ROOT_DIR)/smith-token-hook.sh $(HOME)/.smith-token-hook.sh
 
 .PHONY: go-tools
