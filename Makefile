@@ -89,10 +89,17 @@ go-tools:
 	go get -u github.com/onsi/ginkgo/ginkgo \
 		github.com/onsi/gomega
 
+
 .PHONY: rust
+rustupcmd := $(shell command -v rustup 2> /dev/null)
 ## Install rust and rust toolchain
 rust:
+ifndef rustupcmd
+	echo "rustup could not be found"
+	echo "performing first install of rust!"
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+endif
+	rustup update
 
 .PHONY: vscode-extensions
 ## Install vscode extensions
