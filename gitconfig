@@ -44,15 +44,14 @@
 	gpgsign = true
 [user]
   name = Alex Blease
-  email = alexblease@pivotal.io
+  email = alexblease@vmware.com
+  program = /usr/local/bin/gpg
+	signingkey = < lpass show gpg-signing-key >
 [duet "env"]
 	git-author-initials = ab
 	git-author-name = Alex Blease
-	git-author-email = ablease@pivotal.io
+	git-author-email = ablease@vmware.com
 	mtime = 1588863543
-	git-committer-initials = ab
-	git-committer-name = Alex Blease
-	git-committer-email = ablease@pivotal.io
 [gpg]
   program = /usr/local/bin/gpg
 [credential]
