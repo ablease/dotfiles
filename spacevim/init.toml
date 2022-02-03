@@ -31,7 +31,6 @@
     vimcompatible = true
 
     bootstrap_after = "myspacevim#after"
-    bootstrap_before = "myspacevim#before"
     filemanager = "nerdtree"
     autocomplete_parens = false
 
@@ -70,7 +69,7 @@ name = "fzf"
 
 [[layers]]
   name = "git"
-  git-plugin = "fugitive"
+  git_plugin = "fugitive"
 
 [[custom_plugins]]
 name = 'machakann/vim-sandwich'
