@@ -1,6 +1,6 @@
 export ZSH="/Users/ablease/.oh-my-zsh"
 
-ZSH_THEME="custom-refined"
+ZSH_THEME="frisk"
 
 DISABLE_UPDATE_PROMPT="true"
 ENABLE_CORRECTION="true"
@@ -16,7 +16,6 @@ plugins=(
     aws
     brew
     bundler
-    cargo
     colored-man-pages
     colorize
     chroma
