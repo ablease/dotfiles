@@ -14,3 +14,6 @@ git clone git@github.com:ablease/dotfiles.git && \
 ```
 
 The `keys` target for loading SSH and GPG keys for interacting with GitHub is interactive and fetches secrets from lastpass, so it is not included in the `setup` target.
+
+## Screenshots
+![example](./screenshot.png)
