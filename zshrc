@@ -86,6 +86,10 @@ source "$(brew --prefix)/share/zsh/site-functions"
 # Setup Gpg
 export GPG_TTY=$(tty)
 
+# Configure odpclients
+alias odpctl="/Users/ablease/downloads/.odpcli/odpctl/odpctl"
+alias odpconfig="vi /Users/ablease/downloads/.odpcli/odpctl/etc/config.txt"
+
 # Tweak zsh highlighting colors
 export ZSH_HIGHLIGHT_STYLES[bracket-level-1]='fg=cyan,bold'
 export ZSH_HIGHLIGHT_STYLES[bracket-level-3]='fg=043,bold'
