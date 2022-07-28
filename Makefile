@@ -1,6 +1,7 @@
 .DEFAULT_GOAL := show-help
 THIS_FILE := $(lastword $(MAKEFILE_LIST))
 ROOT_DIR := $(shell dirname $(realpath $(THIS_FILE)))
+GPG_SIGNING_KEY := $(lpass show --password gpg-signing-key)
 
 .PHONY: show-help
 # See <https://gist.github.com/klmr/575726c7e05d8780505a> for explanation.
@@ -60,6 +61,7 @@ git:
 	if [ ! -d $(HOME)/workspace/git-hooks-core ]; then \
 		git clone git@github.com:pivotal-cf/git-hooks-core.git $(HOME)/workspace/git-hooks-core; fi
 	cd $(HOME)/workspace/git-hooks-core && git pull
+	git config --global user.signingkey $(GPG_SIGNING_KEY)
 ifneq ($(shell which cred-alert-cli), /usr/local/bin/cred-alert-cli)
 	curl -f https://s3.amazonaws.com/cred-alert/cli/current-release/cred-alert-cli_darwin > /usr/local/bin/cred-alert-cli && chmod +x /usr/local/bin/cred-alert-cli
 endif
