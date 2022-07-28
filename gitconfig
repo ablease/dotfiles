@@ -46,7 +46,6 @@
   name = Alex Blease
   email = alexblease@vmware.com
   program = /usr/local/bin/gpg
-	signingkey = < lpass show gpg-signing-key >
 [duet "env"]
 	git-author-initials = ab
 	git-author-name = Alex Blease

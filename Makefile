@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := show-help
 THIS_FILE := $(lastword $(MAKEFILE_LIST))
 ROOT_DIR := $(shell dirname $(realpath $(THIS_FILE)))
-GPG_SIGNING_KEY := $(lpass show --password gpg-signing-key)
+GPG_SIGNING_KEY := $(shell lpass show --password gpg-signing-key)
 
 .PHONY: show-help
 # See <https://gist.github.com/klmr/575726c7e05d8780505a> for explanation.
@@ -85,13 +85,6 @@ smith:
 	git clone git@github.com:pivotal/smith.git && cd smith && go install
 	rm -rf smith
 	ln -f $(ROOT_DIR)/smith-token-hook.sh $(HOME)/.smith-token-hook.sh
-
-.PHONY: go-tools
-## Install golang tools
-go-tools:
-	go get -u github.com/onsi/ginkgo/ginkgo \
-		github.com/onsi/gomega
-
 
 .PHONY: rust
 rustupcmd := $(shell command -v rustup 2> /dev/null)
