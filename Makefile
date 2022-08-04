@@ -11,7 +11,7 @@ show-help:
 
 .PHONY: setup
 ## Installs dotfiles
-setup: brew zsh git tmux smith go-tools rust vscode-extensions cf-plugins spacevim repos fonts allow-internet
+setup: brew zsh git tmux smith rust vscode-extensions cf-plugins spacevim repos fonts allow-internet
 
 
 .PHONY: zsh
