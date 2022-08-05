@@ -46,6 +46,10 @@ init = git init
 checkout = git clone 'git@github.com:pivotal-cf/docs-rabbitmq-pcf.git' 'docs-rabbitmq-pcf'
 init = git init
 
+[workspace/rabbitmq-tile-home]
+checkout = git clone 'git@github.com:pivotal-cf/rabbitmq-tile-home.git' 'rabbitmq-tile-home'
+init = git init
+
 # https://github.com/pivotal-cf/docs-rabbitmq-replicator
 [workspace/docs-rabbitmq-replicator]
 checkout = git clone 'git@github.com:pivotal-cf/docs-rabbitmq-replicator.git' 'docs-rabbitmq-replicator'
@@ -115,6 +119,10 @@ checkout = git clone 'git@github.com:rabbitmq/cluster-operator.git' 'cluster-ope
 update =
 	 git checkout main
 	 git pull --rebase --autostash
+init = git init
+
+[workspace/rabbitmq-for-k8s-home]
+checkout = git clone 'git@github.com:pivotal/rabbitmq-for-k8s-home.git' 'rabbitmq-for-k8s-home'
 init = git init
 
 # ------------
