@@ -11,7 +11,7 @@ show-help:
 
 .PHONY: setup
 ## Installs dotfiles
-setup: brew zsh git tmux smith rust vscode-extensions cf-plugins spacevim repos fonts allow-internet
+setup: brew zsh git tmux smith rust vscode-extensions spacevim repos fonts allow-internet cf-plugins
 
 
 .PHONY: zsh
@@ -116,12 +116,14 @@ vscode-extensions:
 .PHONY: cf-plugins
 ## Install cf-cli plugins
 cf-plugins:
-ifneq ($(cf list-plugin-repos | grep CF-Community | wc -l), 1)
-	cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org/
+ifeq ($(cf target), 1)
+	echo "No CF environment targetted. To install CF CLI plugins, target an environment and run `make cf-plugins`"
+else ifneq ($(cf list-plugin-repos | grep CF-Community | wc -l), 1)
+		cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org/
+		cf install-plugin "Firehose Plugin" -r CF-Community -f
+		cf install-plugin "log-cache" -r CF-Community -f
+		cf install-plugin "log-stream" -r CF-Community -f
 endif
-	cf install-plugin "Firehose Plugin" -r CF-Community -f
-	cf install-plugin "log-cache" -r CF-Community -f
-	cf install-plugin "log-stream" -r CF-Community -f
 
 .PHONY: spacevim
 ## Install spacevim
