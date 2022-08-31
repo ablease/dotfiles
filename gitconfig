@@ -44,7 +44,7 @@
 	gpgsign = true
 [user]
   name = Alex Blease
-  email = alexblease@vmware.com
+  email = ablease@vmware.com
   program = /usr/local/bin/gpg
 [duet "env"]
 	git-author-initials = ab
