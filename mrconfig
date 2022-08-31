@@ -68,7 +68,7 @@ init = git init
 [workspace/p-rabbitmq]
 checkout = git clone 'git@github.com:pivotal-cf/p-rabbitmq.git' 'p-rabbitmq'
 update =
-	 git checkout v1.21
+	 git checkout v2.2
 	 git pull --rebase --autostash
 resethardhead = git reset --hard HEAD
 init = git init
@@ -94,6 +94,9 @@ init = git init
 
 [workspace/on-demand-service-broker-release]
 checkout = git clone 'git@github.com:pivotal-cf/on-demand-service-broker-release.git' 'on-demand-service-broker-release'
+update =
+	 git checkout main
+	 git pull --rebase --autostash
 resethardhead = git reset --hard HEAD
 init = git init
 
@@ -136,6 +139,9 @@ init = git init
 
 [workspace/rabbitmq-perf-test]
 checkout = git clone 'git@github.com:rabbitmq/rabbitmq-perf-test.git' 'rabbitmq-perf-test'
+update =
+	 git checkout main
+	 git pull --rebase --autostash
 resethardhead = git reset --hard HEAD
 init = git init
 
