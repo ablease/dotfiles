@@ -15,7 +15,7 @@ git clone git@github.com:ablease/dotfiles.git
 ```
 [user]
   name = Alex Blease
-  email = alexblease@vmware.com
+  email = ablease@vmware.com
   program = /usr/local/bin/gpg
 	signingkey = < your signing key here >
 ```
