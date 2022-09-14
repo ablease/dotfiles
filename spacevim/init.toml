@@ -59,6 +59,9 @@ name = "colorscheme"
 name = "lang#go"
 
 [[layers]]
+name = "lang#erlang"
+
+[[layers]]
 name = "lang#ruby"
 
 [[layers]]
