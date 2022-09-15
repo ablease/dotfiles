@@ -86,6 +86,7 @@ brew 'yarn'
 brew 'yj'
 brew 'vmware-tanzu/carvel/ytt'
 brew 'zsh-completions'
+brew 'rebar3'
 
 cask 'adoptopenjdk'
 cask 'atom'
