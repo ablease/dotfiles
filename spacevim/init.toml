@@ -62,7 +62,7 @@ name = "lang#go"
 name = "lang#erlang"
 
 [[layers]]
-name = "lsp"
+name = "lang#rust"
 
 [[layers]]
 name = "lang#ruby"
