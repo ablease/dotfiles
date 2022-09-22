@@ -68,6 +68,14 @@ name = "lang#rust"
 name = "lang#ruby"
 
 [[layers]]
+  name = "lsp"
+  filetypes = [
+    "rust"
+  ]
+  [layers.override_cmd]
+    rust = ["rls"]
+
+[[layers]]
 name = "debug"
 
 [[layers]]
