@@ -15,6 +15,7 @@ export PATH=$PATH:$HOME/workspace/rabbitmq-tile-home/bin
 # Capybara Webkit needs special Qt starting with XCode 10
 export PATH=$PATH:$HOME/Qt5.5.0/5.5/clang_64/bin
 
+# Setup Kubebuilder
 export PATH=$PATH:/usr/local/kubebuilder/bin
 
 # Mac uses an ancient version of ruby, use homebrew ruby instead
