@@ -96,4 +96,4 @@ export ZSH_HIGHLIGHT_STYLES[cursor]='bg=049'
 export ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=133'
 export ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=198'
 
-export PATH=/usr/local/opt/ruby/bin:$PATH
+eval "$(rbenv init - zsh)"
