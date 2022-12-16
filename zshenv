@@ -24,3 +24,7 @@ export PATH=/usr/local/opt/ruby/bin:$PATH
 # Setup Krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 source "$HOME/.cargo/env"
+
+# Use Gcloud Auth Plugin
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
