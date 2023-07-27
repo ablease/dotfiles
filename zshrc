@@ -52,10 +52,10 @@ alias da="direnv allow"
 # python
 export PATH="/usr/local/opt/python@3.8/libexec/bin:$PATH"
 
-# Always use nvim
-export EDITOR=nvim
-alias vim="nvim"
-alias vi="nvim"
+# Always use lunarvim
+export EDITOR=lvim
+alias vim="lvim"
+alias vi="lvim"
 
 alias ll="ls -al"
 

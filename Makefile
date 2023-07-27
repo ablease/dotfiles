@@ -11,7 +11,7 @@ show-help:
 
 .PHONY: setup
 ## Installs dotfiles
-setup: brew zsh git tmux smith rust vscode-extensions spacevim repos fonts allow-internet cf-plugins
+setup: brew zsh git tmux smith rust vscode-extensions repos fonts allow-internet cf-plugins lunarvim
 
 
 .PHONY: zsh
@@ -136,13 +136,26 @@ repos:
 ## Install patched fonts
 fonts:
 	# clone
-	git clone https://github.com/powerline/fonts.git --depth=1
+	git clone https://github.com/ronniedroid/getnf.git
+
 	# install
-	$(ROOT_DIR)/fonts/install.sh
+	$(ROOT_DIR)/getnf/install.sh
+
 	# clean-up a bit
-	rm -rf $(ROOT_DIR)/fonts/
+	rm -rf $(ROOT_DIR)/getnf/
 
 .PHONY: allow-internet
 ## Allow executables from the internet
 allow-internet:
 	sudo spctl --master-disable
+
+.PHONY: lunarvim
+## Allow executables from the internet
+lunarvim:
+ifneq ($(shell which git), /usr/local/bin/git)
+	echo "git not installed. Go get it `brew install git`"
+endif
+ifneq ($(shell which lazygit), /usr/local/bin/lazygit)
+	echo "Lazygit not installed. Go get it `brew install lazygit`"
+endif
+	curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh | bash
