@@ -125,15 +125,6 @@ else ifneq ($(cf list-plugin-repos | grep CF-Community | wc -l), 1)
 		cf install-plugin "log-stream" -r CF-Community -f
 endif
 
-.PHONY: spacevim
-## Install spacevim
-spacevim:
-	curl -sLf https://spacevim.org/install.sh | bash
-	rm $(HOME)/.SpaceVim.d/init.toml
-	rm $(HOME)/.Spacevim.d/autoload
-	ln -s $(ROOT_DIR)/spacevim/autoload $(HOME)/.Spacevim.d
-	ln -s $(ROOT_DIR)/spacevim/init.toml $(HOME)/.Spacevim.d
-
 .PHONY: repos
 ## Clone git repos
 repos:
