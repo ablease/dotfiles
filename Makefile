@@ -11,7 +11,7 @@ show-help:
 
 .PHONY: setup
 ## Installs dotfiles
-setup: brew zsh git tmux smith rust vscode-extensions repos fonts allow-internet cf-plugins lunarvim
+setup: brew zsh git tmux smith rust vscode-extensions repos fonts allow-internet cf-plugins lunarvim lunarvim-config
 
 
 .PHONY: zsh
@@ -150,7 +150,7 @@ allow-internet:
 	sudo spctl --master-disable
 
 .PHONY: lunarvim
-## Allow executables from the internet
+## Install lvim if not already installed
 lunarvim:
 ifneq ($(shell which git), /usr/local/bin/git)
 	echo "git not installed. Go get it `brew install git`"
@@ -159,3 +159,8 @@ ifneq ($(shell which lazygit), /usr/local/bin/lazygit)
 	echo "Lazygit not installed. Go get it `brew install lazygit`"
 endif
 	curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh | bash
+
+.PHONY: lunarvim-config
+## Copy over lvim config
+lunarvim-config:
+	cp $(ROOT_DIR)/lvim/config.lua $(HOME)/.config/lvim/
