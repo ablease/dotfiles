@@ -145,7 +145,7 @@ fonts:
 	rm -rf $(ROOT_DIR)/getnf/
 
 .PHONY: allow-internet
-## Allow executables from the internet
+## Allow executables from the internet still works in OS Ventura 13.6.3!
 allow-internet:
 	sudo spctl --master-disable
 
