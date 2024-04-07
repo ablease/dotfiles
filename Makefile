@@ -62,10 +62,6 @@ git:
 		git clone git@github.com:pivotal-cf/git-hooks-core.git $(HOME)/workspace/git-hooks-core; fi
 	cd $(HOME)/workspace/git-hooks-core && git pull
 	git config --global user.signingkey $(GPG_SIGNING_KEY)
-ifneq ($(shell which cred-alert-cli), /usr/local/bin/cred-alert-cli)
-	curl -f https://s3.amazonaws.com/cred-alert/cli/current-release/cred-alert-cli_darwin > /usr/local/bin/cred-alert-cli && chmod +x /usr/local/bin/cred-alert-cli
-endif
-	cred-alert-cli update
 
 .PHONY: tmux
 ## Configures tmux
