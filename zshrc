@@ -1,4 +1,4 @@
-export ZSH="/Users/ablease/.oh-my-zsh"
+export ZSH="/Users/${USERNAME}/.oh-my-zsh"
 
 ZSH_THEME="frisk"
 
@@ -86,8 +86,8 @@ source "$(brew --prefix)/share/zsh/site-functions"
 export GPG_TTY=$(tty)
 
 # Configure odpclients
-alias odpctl="/Users/ablease/downloads/.odpcli/odpctl/odpctl"
-alias odpconfig="vi /Users/ablease/downloads/.odpcli/odpctl/etc/config.txt"
+alias odpctl="/Users/a${USERNAME}blease/downloads/.odpcli/odpctl/odpctl"
+alias odpconfig="vi /Users/${USERNAME}/downloads/.odpcli/odpctl/etc/config.txt"
 
 # Tweak zsh highlighting colors
 export ZSH_HIGHLIGHT_STYLES[bracket-level-1]='fg=cyan,bold'
@@ -100,14 +100,14 @@ eval "$(rbenv init - zsh)"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/ablease/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/${USERNAME}/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/ablease/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/ablease/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/Users/${USERNAME}/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/${USERNAME}/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/ablease/miniconda3/bin:$PATH"
+        export PATH="/Users/${USERNAME}/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup

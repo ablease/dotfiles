@@ -25,4 +25,5 @@ source "$HOME/.cargo/env"
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 # For Lunarvim, put .local/bin in path
-export PATH=/Users/ablease/.local/bin:$PATH
+export PATH=/Users/alex/.local/bin:$PATH
+
