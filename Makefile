@@ -11,7 +11,7 @@ show-help:
 
 .PHONY: setup
 ## Installs dotfiles
-setup: brew zsh git tmux smith rust vscode-extensions repos fonts allow-internet cf-plugins lunarvim lunarvim-config
+setup: brew zsh git tmux rust vscode-extensions fonts allow-internet lunarvim lunarvim-config
 
 
 .PHONY: zsh
@@ -47,9 +47,9 @@ endif
 .PHONY: keys
 ## Loads SSH and GPG keys for interacting with GitHub. Interactive
 keys: brew
-	gpg --import <(lpass show "Personal/GitHub GPG Key" --notes)
+	gpg --import <(lpass show "GitHub GPG Key" --notes)
 	mkdir -p $(HOME)/.ssh
-	lpass show "Personal/GitHub SSH Key" --notes > $(HOME)/.ssh/ssh-key
+	lpass show "GitHub SSH Key" --notes > $(HOME)/.ssh/ssh-key
 	eval "$(ssh-agent -s )" && ssh-add -D && ssh-add $(HOME)/.ssh/ssh-key
 
 .PHONY: git
@@ -79,13 +79,6 @@ tmux:
 		git pull && \
 		$(HOME)/.tmux/plugins/tpm/bin/update_plugins all; fi
 
-.PHONY: smith
-## Add smith and token hook
-smith:
-	git clone git@github.com:pivotal/smith.git && cd smith && go install
-	rm -rf smith
-	ln -f $(ROOT_DIR)/smith-token-hook.sh $(HOME)/.smith-token-hook.sh
-
 .PHONY: rust
 rustupcmd := $(shell command -v rustup 2> /dev/null)
 ## Install rust and rust toolchain
@@ -112,25 +105,6 @@ vscode-extensions:
 	code --install-extension sonarsource.sonarlint-vscode
 	code --install-extension redhat.vscode-xml
 	code --install-extension gamunu.vscode-yarn
-
-.PHONY: cf-plugins
-## Install cf-cli plugins
-cf-plugins:
-ifeq ($(cf target), 1)
-	echo "No CF environment targetted. To install CF CLI plugins, target an environment and run `make cf-plugins`"
-else ifneq ($(cf list-plugin-repos | grep CF-Community | wc -l), 1)
-		cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org/
-		cf install-plugin "Firehose Plugin" -r CF-Community -f
-		cf install-plugin "log-cache" -r CF-Community -f
-		cf install-plugin "log-stream" -r CF-Community -f
-endif
-
-.PHONY: repos
-## Clone git repos
-repos:
-	ln -f $(ROOT_DIR)/mrconfig $(HOME)/.mrconfig
-	cd $(HOME) && \
-		mr update -q -j 4 --rebase --autostash
 
 .PHONY: fonts
 ## Install patched fonts
