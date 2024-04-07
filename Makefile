@@ -47,9 +47,9 @@ endif
 .PHONY: keys
 ## Loads SSH and GPG keys for interacting with GitHub. Interactive
 keys: brew
-	gpg --import <(lpass show "GitHub GPG Key" --notes)
+	gpg --import <(lpass show "Code/GitHub GPG Key" --notes)
 	mkdir -p $(HOME)/.ssh
-	lpass show "GitHub SSH Key" --notes > $(HOME)/.ssh/ssh-key
+	lpass show "Code/GitHub SSH Key" --notes > $(HOME)/.ssh/ssh-key
 	eval "$(ssh-agent -s )" && ssh-add -D && ssh-add $(HOME)/.ssh/ssh-key
 
 .PHONY: git
