@@ -38,7 +38,7 @@ zsh:
 ## Installs apt packages and dependencies
 apt:
 	# Installing zsh
-	sudo apt install zsh autojump
+	sudo apt install zsh autojump golang-go
 
 .PHONY: keys
 ## Loads SSH and GPG keys for interacting with GitHub. Interactive

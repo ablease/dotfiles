@@ -1,13 +1,9 @@
 export PATH=/usr/local/sbin:$PATH
 
 # Setup Go
-export GOPATH=$HOME/go
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOBIN
+export PATH=$PATH:/usr/local/go/bin
 
 # Setup Gpg
 export GPG_TTY=$(tty)
 
-# For Lunarvim, put .local/bin in path
-export PATH=/Users/alex/.local/bin:$PATH
 
