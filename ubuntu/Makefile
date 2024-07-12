@@ -11,7 +11,7 @@ show-help:
 
 .PHONY: setup
 ## Installs dotfiles
-setup: zsh
+setup: zsh apt
 
 
 .PHONY: zsh
@@ -37,8 +37,10 @@ zsh:
 .PHONY: apt
 ## Installs apt packages and dependencies
 apt:
-	# Installing zsh
-	sudo apt install zsh autojump golang-go
+	sudo add-apt-repository ppa:neovim-ppa/unstable
+	sudo apt update
+	sudo apt upgrade -y
+	sudo apt install zsh autojump golang-go python3-pip nodejs ripgrep neovim
 
 .PHONY: keys
 ## Loads SSH and GPG keys for interacting with GitHub. Interactive
@@ -55,19 +57,6 @@ git:
 	ln -f $(ROOT_DIR)/gitignore_global $(HOME)/.gitignore_global
 	if [ ! -d $(HOME)/workspace ]; then mkdir -p $(HOME)/workspace; fi
 	git config --global user.signingkey $(GPG_SIGNING_KEY)
-
-.PHONY: tmux
-## Configures tmux
-tmux:
-	ln -f $(ROOT_DIR)/tmux.conf $(HOME)/.tmux.conf
-	if [ ! -d $(HOME)/.tmux/plugins/tpm ]; then \
-		mkdir -p $(HOME)/.tmux/plugins && \
-		git clone https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm && \
-		$(HOME)/.tmux/plugins/tpm/bin/install_plugins all; else \
-		cd $(HOME)/.tmux/plugins/tpm && \
-		git pull && \
-		$(HOME)/.tmux/plugins/tpm/bin/update_plugins all; fi
-
 
 .PHONY: vscode-extensions
 ## Install vscode extensions
@@ -100,15 +89,14 @@ fonts:
 .PHONY: lunarvim
 ## Install lvim if not already installed
 lunarvim:
-ifneq ($(shell which git), /usr/local/bin/git)
-	echo "git not installed. Go get it `brew install git`"
-endif
-ifneq ($(shell which lazygit), /usr/local/bin/lazygit)
-	echo "Lazygit not installed. Go get it `brew install lazygit`"
-endif
-	curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh | bash
+	LV_BRANCH='release-1.4/neovim-0.9' curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.4/neovim-0.9/utils/installer/install.sh | zsh
 
 .PHONY: lunarvim-config
 ## Copy over lvim config
 lunarvim-config:
 	cp $(ROOT_DIR)/lvim/config.lua $(HOME)/.config/lvim/
+
+.PHONY: rust
+## rust and rust tools
+rust:
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
