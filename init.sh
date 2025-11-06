@@ -164,6 +164,10 @@ configure_git() {
   git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 }
 
+install_oh_my_zsh() {
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+}
+
 main() {
   require_macos
   need_sudo
@@ -172,6 +176,7 @@ main() {
   ensure_brew_path
   install_or_update_git
   configure_git
+  install_oh_my_zsh
   log "All done! You may need to open a new terminal for PATH changes to take effect."
 }
 
