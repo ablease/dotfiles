@@ -155,7 +155,7 @@ install_or_update_git() {
 }
 
 configure_git() {
-  log "Installing/upgrading Git via Homebrew..."
+  log "Applying Git configs ..."
   git config --global user.name "Alex Blease"
   git config --global user.email "alexblease@gmail.com"
   git config --global alias.st status
@@ -165,6 +165,7 @@ configure_git() {
 }
 
 install_oh_my_zsh() {
+  log "Installing oh my zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
 
