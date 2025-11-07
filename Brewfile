@@ -3,3 +3,4 @@ cask "warp"
 
 brew "azure-cli"
 brew "neovim"
+brew "python"
