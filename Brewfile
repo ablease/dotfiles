@@ -4,3 +4,7 @@ cask "warp"
 brew "azure-cli"
 brew "neovim"
 brew "python"
+brew "docker"
+
+brew "go"
+brew "hugo"
