@@ -16,7 +16,7 @@ append_unique_line() {
 }
 
 install_lazyvim() {
-  TARGET_DIR="~/.config/nvim"
+  TARGET_DIR="$HOME/.config/nvim"
   REPO_URL="https://github.com/LazyVim/starter"
 
   if [[ -d "$TARGET_DIR" ]]; then
@@ -34,15 +34,9 @@ configure_shell_aliases() {
   append_unique_line 'vim=nvim' "$HOME/.zshrc"
 }
 
-upgrade_pip3() {
-  log "Upgrading pip3..."
-  python3 -m pip install --upgrade pip
-}
-
 main() {
   install_lazyvim
   configure_shell_aliases
-  upgrade_pip3() {}
   log "All done! You may need to open a new terminal for PATH changes to take effect."
 }
 
