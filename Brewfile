@@ -8,3 +8,7 @@ brew "docker"
 
 brew "go"
 brew "hugo"
+
+brew "node"
+
+cask "font-mononoki"

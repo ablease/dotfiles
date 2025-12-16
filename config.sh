@@ -31,7 +31,7 @@ install_lazyvim() {
 
 configure_shell_aliases() {
   log "Setting up shell aliases..."
-  append_unique_line 'vim=nvim' "$HOME/.zshrc"
+  append_unique_line 'alias vim=nvim' "$HOME/.zshrc"
 }
 
 main() {
