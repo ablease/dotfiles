@@ -30,6 +30,8 @@ unsetopt correct_all
 HISTSIZE=1000000
 SAVEHIST=1000000
 
+# ghostty
+
 # Always use lazyvim
 export EDITOR=nvim
 alias vim="nvim"
