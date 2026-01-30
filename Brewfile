@@ -5,6 +5,7 @@ brew "azure-cli"
 brew "neovim"
 brew "python"
 brew "docker"
+brew "opencode"
 brew "stow"
 
 brew "go"
