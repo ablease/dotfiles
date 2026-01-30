@@ -1,2 +1,18 @@
+# Editor files
 .vscode
 .DS_Store
+
+# SSH keys and secrets
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+*.pub
+
+# Environment variables
+.env
+.env.local
+
+# Private/sensitive files
+*_history
+*.log
